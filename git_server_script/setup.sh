@@ -16,8 +16,8 @@ echo "Git Kullanıcısı ssh key oluşturuluyor."
 ssh-keygen 
 
 
-echo "SSH Keyinizi giriniz : "
-read key_of_me
+key_of_me=$(cat ~/.ssh/id_rsa.pub)
+
 
 touch /home/git/.ssh/authorized_keys
 echo $key_of_me >> /home/git/.ssh/authorized_keys
