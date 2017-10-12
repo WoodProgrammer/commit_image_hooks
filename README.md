@@ -49,15 +49,12 @@ son imageı göndermektedir.
 
 
 
-#ENG
+# ENG
 For setup git server on your remote machine run this on your remote machine.
 
-```sh
-   $ git_server_scripts/stup.sh
-```
-Githooks is structure make our CI process.Githooks trigger the which process trigger on it.
+Githooks is structure make our CI process fast.Githooks trigger the which process subscribe on it.
 
-Githooks triggering cause of its own events it has.
+Githooks triggering though of its own events it has.
 
 For example 
 * post_recevie 
@@ -66,30 +63,29 @@ For example
 
 we  have lots of githooks events.
 
-#### Explanation some one :
+Explanation some events :
 
 * post_receive: 
 
-```sh
 This event to do jobs if repository got new push.
-```
-
 * pre_commit :
 
-```sh
+
 Pre Commit is usign on developer side.You can write your tests
 and work before commiting process.Commiting process trigger the 
 pre-commit event.
-```
-I explain the events above which events to use in this project
-###Where the used in this Project ?
 
-* If any commit pushed on your local git repository post_receive
+I explained the events above which events to use in this project
+
+Where used in this Project ?
+
+* If any commit pushed on your local git repository,post_receive
 event build the docker image and push where you want(DockerHub or your own DockerRegistry).
 
-###Setup 
-```sh
 
-   Coming soon.
-   
+###Kurulum
+```sh
+       Coming soon .
 ```
+  
+
