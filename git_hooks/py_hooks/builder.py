@@ -21,7 +21,7 @@ class Builder:
 
         try:
 
-            image = self.client.images.build(path='/Users/emirozbir/Desktop/docker_test')
+            image = self.client.images.build(path=self.get_docker_file_place())
 
             try:
                 r = requests.put('http://localhost:5000/{}'.format('project_1'), data={"status": "BUILT "})
