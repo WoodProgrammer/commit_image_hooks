@@ -5,7 +5,7 @@ app = Flask(__name__)
 api = Api(app)
 images = {}
 
-
+x = 0
 def image_aborter(image_id):
     abort(404,"Image Not Found")
 
@@ -26,18 +26,18 @@ class DockerImage(Resource):
             print(request)
             image_aborter(image_id)
 
-    def put(self,user_name,image_id):
-
+    def put(self,user_name):
+        global x
+        x += 1
         data = request.form['status']
-        images[image_id] = image_id
-        images[image_id] = {}
-        images[image_id]['status'] = data
+        images[x] = {}
+        images[x]['status'] = data
 
 
         return {'status':'Saved ! '}
 
 api.add_resource(DockerApi,'/<string:user_name>')
-api.add_resource(DockerImage,'/<string:user_name>/<string:image_id>')
+api.add_resource(DockerImage,'/<string:user_name>')
 
 
 if __name__ == '__main__':

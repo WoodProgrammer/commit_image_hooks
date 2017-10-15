@@ -9,9 +9,6 @@ git_server_ip=$(hostname -I)
 echo "Git Kullanıcısı oluşturuluyor.."
 adduser git 
 
-
-
-
 echo "Git Kullanıcısı ssh key oluşturuluyor."
 ssh-keygen 
 
