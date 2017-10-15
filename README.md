@@ -35,17 +35,53 @@ eventlerimize testlerimizi çalıştırabilmesini sağlayabiliriz.
 ```
 Ben şuanlık projemizde kullanacağımız eventleri açıkladım.
 
-###Bu projemizde nerede kullandık?
+### Bu projemizde nerede kullandık?
 
 * Pre_Receive eventi bizim gelen pushları alıp docker imagelarını 
 build ediyor ve kendi registrymize gönderiyor veya dockerhubda sizin kendi hesabınıza
 son imageı göndermektedir.
 
-###Kurulum
+### Kurulum
 ```sh
 
     Devamı gelecek .
 ```
+  
+# HOOKSLARI İNCELEME
+
+
+Pre Receive hooks is triggering some methods for us.
+This methods building docker images.
+
+Pre Receive bizim için kendi içerisindeki metodları tetikler.Bu metodlar docker imajlarını inşa ede.
+
+Eğer master branche bir push gelirse gereken bu tüm repoya ait docker ortamını ayaklandırır.
+
+```py
+### post-receive 
+from builder import Builder
+dev = Builder()
+print dev.build_image()
+
+```
+
+Builder Class/build_image metoduna bakalım
+
+Bu metod bizim imajımızı inşa eder ve sonuçları API'ye post eder.
+```py
+	
+def build_image(self):
+
+    try:
+    	image = self.client.images.build(path=self.get_docker_file_place())
+
+    try:
+        r = requests.put('http://localhost:5000/{}'.format('project_1'), data={"status": "BUILT "})
+                return "POSTED" + str(r.status_code)
+
+```
+
+
 
 
 
@@ -83,9 +119,50 @@ Where used in this Project ?
 event build the docker image and push where you want(DockerHub or your own DockerRegistry).
 
 
-###Kurulum
+### Installation
 ```sh
        Coming soon .
 ```
   
+  
+  
+  
+# DIVING TO THE HOOKS
+
+
+Pre Receive hooks is triggering  methods for us inside own.
+This methods building docker images.
+
+
+If a push came to the master branch this hooks build docker images.
+Little code block :
+```py
+### post-receive 
+from builder import Builder
+dev = Builder()
+print dev.build_image()
+
+```
+
+And look to the Builder Class/build_image:
+
+This build the user docker environment and post the status to the api.
+```py
+	
+def build_image(self):
+
+    try:
+    	image = self.client.images.build(path=self.get_docker_file_place())
+
+    try:
+        r = requests.put('http://localhost:5000/{}'.format('project_1'), data={"status": "BUILT "})
+                return "POSTED" + str(r.status_code)
+
+```
+
+
+
+
+
+
 
