@@ -17,7 +17,7 @@ def docker_builder(ch, method, properties, body):
 
 
 
-    git.Git().clone("git@{}:/home/git/docs/{}".format(tmp["git_server"],tmp["repo_name"]))
+    git.Git().clone("git@{}:/home/git/version/{}".format(tmp["git_server"],tmp["repo_name"]),branch=tmp['branch_name'])
 
         ##BRANCH EKLENEECEK.
         ##DB'DEN QUEUE EXPIRING..(rds)
