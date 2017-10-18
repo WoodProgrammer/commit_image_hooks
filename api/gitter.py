@@ -18,9 +18,6 @@ class Queuer:
                                   body=message)
 
         print(" [x] Sent 'Hello World!'")
-    def __del__(self):
-
-        self.connection.close()
 
 
 

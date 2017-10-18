@@ -1,5 +1,6 @@
 from flask import Flask,request,abort
 from flask_restful import Resource,Api
+import json
 from gitter import Queuer
 app = Flask(__name__)
 api = Api(app)
@@ -20,7 +21,7 @@ class DockerImage(Resource):
         try:
 
 
-
+####db'den çekilecek ....
             return {user_name:images[user_name][image_id] }
 
         except:
@@ -28,18 +29,21 @@ class DockerImage(Resource):
             image_aborter(image_id)
 
     def put(self,user_name):
-        global x
-        x += 1
+        images = {}
+
+
         data1 = request.form['branch_name']
         data2 = request.form['repo_name']
         data3 = request.form['git_server']
 
-        images[x] = {}
-        images[x]['branch_name'] = data1
-        images[x]['repo_name'] = data2
-        images[x]['git_server'] = data3
 
-        docker_queue.publisher(str(images))
+        images['branch_name'] = data1
+        images['repo_name'] = data2
+        images['git_server'] = data3
+
+        docker_queue.publisher(json.dumps(images))
+
+
 
         return {'status':'Queued ! '}
     ####bu kisim db'ye atılacak consumer tarafından guncellenecek.

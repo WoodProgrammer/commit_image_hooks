@@ -1,5 +1,9 @@
-from builder import Builder
-import requests,time
+import time
+
+import requests
+
+from git_hooks.py_hooks.builder import Builder
+
 dev = Builder()
 image_status = dev.build_image()
 
