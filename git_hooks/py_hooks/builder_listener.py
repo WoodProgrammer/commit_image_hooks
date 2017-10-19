@@ -20,6 +20,7 @@ def docker_builder(ch, method, properties, body):
     git.Git().clone("git@{}:/home/git/version/{}".format(tmp["git_server"],tmp["repo_name"]),branch=tmp['branch_name'])
     img_status = image_builder.build_image(path='{}/'.format(tmp["repo_name"]),tag='{}'.format(tmp['repo_name']+tmp['branch_name']))
     if img_status:
+
         os.system("docker tag  {}   {}/{}".format(tmp['repo_name']+tmp['branch_name'],registry_name,tmp['repo_name']+tmp['branch_name']))
         os.system("docker push {}/".format(registry_name,tmp['repo_name']+tmp['branch_name']))
     else:

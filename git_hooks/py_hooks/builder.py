@@ -10,7 +10,14 @@ class Builder:
 
 
     def build_image(self,path=None,tag=''):
-        image = self.client.images.build(path=path,tag=tag)
+        try:
+            image = self.client.images.build(path=path,tag=tag)
+            return True
+
+        except:
+            return False
+x = Builder()
+data = x.build_image(path='.',tag='hablela')
 
 
 
