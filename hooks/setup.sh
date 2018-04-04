@@ -24,4 +24,11 @@ else
 
 fi;
 
+echo "Docker Settings Handled"
+echo "Git Repository PATH: \n"
+read path
+
+wget https://raw.githubusercontent.com/WoodProgrammer/commit_image_hooks/master/hooks/pre-receive.sh -O $path/.git/hooks/pre-receive
+chmod +x $path/.git/hooks/pre-receive
+
 

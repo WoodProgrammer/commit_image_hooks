@@ -6,8 +6,6 @@ REGISTRY_URL=$(echo $FERRUH_DOCKER_REGISTRY)
 VERSION_NUMBER=$(awk -F= '/VERSION_NUMBER/ { print $2 }' ../..)
 TAG_NAME=$(awk -F= '/TAG_NAME/ { print $2 }' ../../)
 
-
-
 echo $CURRENT_PATH | awk'{split($0,a,"/");}' 
 
 
