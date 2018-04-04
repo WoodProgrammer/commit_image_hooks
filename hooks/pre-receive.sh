@@ -1,9 +1,9 @@
 #!/bin/bash
+echo "Adding CURRENT_PATH"
 
 CURRENT_PATH=$(pwd)
 echo $CURRENT_PATH | awk'{split($0,a,"/");}' 
 
-#!/bin/bash
 
 docker build ../../ 
 OUT=$?
@@ -11,6 +11,9 @@ OUT=$?
 if [ OUT -eq 0 ]; then
     echo "Dockerfile Building error"
 else
-    last_image_id=cat data |grep built | awk '{split($0,a," "); print a[3]}'
+    VERSION_NUMBER=$(awk -F= '/VERSION_NUMBER/ { print $2 }' ferruh)
+    TAG_NAME=$(awk -F= '/TAG_NAME/ { print $2 }' ferruh)
 
 fi
+
+
